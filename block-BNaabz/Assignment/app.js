@@ -1,7 +1,20 @@
-var express  = require('express');
+var express = require('express');
+var mongoose = require('mongoose');
 
-var mongoose = require("mongoose");
+//connected to mongoose
+mongoose.connect("mongodb://localhost/Assignment",
+{useNewUrlParser: true, useUnifiedTopology: true},
+(err) =>{
+    console.log(err ? err : "connected true");
+}
+);
 
-mongoose.connect(' mongodb://localhost:27017/Assignment',(err)=>{
-    console.log(err ? err : "connected to database");
+var app = express();
+
+app.get('/',(req,res)=>{
+    res.send('Welcome');
+});
+
+app.listen(3000,()=>{
+    console.log('server is listening port 3K');
 });
